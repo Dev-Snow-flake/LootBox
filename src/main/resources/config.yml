@@ -1,0 +1,81 @@
+database:
+  # standalone opens its own PostgreSQL pool.
+  mode: standalone
+  jdbc_url: "jdbc:postgresql://localhost:5432/lootbox"
+  username: "lootbox"
+  password: "change-me"
+  maximum_pool_size: 4
+  connection_timeout_ms: 5000
+  migrate: true
+
+security:
+  # Change before production. Existing boxes become invalid when this changes.
+  hmac_secret: "lootbox-default-secret-rotate-before-production"
+  click_cooldown_ms: 250
+
+delivery:
+  fallback_to_mail: true
+  mail_expire_days: 7
+
+presentation:
+  title_enabled: true
+  particle_enabled: true
+  sound_enabled: true
+  announce_mythic_to_server: true
+
+boxes:
+  basic:
+    display_name: "&aBasic Loot Box"
+    material: CHEST
+    pool: basic
+    lore:
+      - "&7Right-click to open immediately."
+      - "&fPool: &abasic"
+  rare:
+    display_name: "&bRare Loot Box"
+    material: ENDER_CHEST
+    pool: rare
+    lore:
+      - "&7Right-click to open immediately."
+      - "&fPool: &brare"
+
+pools:
+  basic:
+    - material: WHEAT
+      display_name: "&fWheat Bundle"
+      tier: COMMON
+      weight: 50
+      amount_min: 8
+      amount_max: 16
+    - material: IRON_INGOT
+      display_name: "&aIron Pack"
+      tier: UNCOMMON
+      weight: 25
+      amount_min: 3
+      amount_max: 8
+    - material: DIAMOND
+      display_name: "&bDiamond"
+      tier: RARE
+      weight: 10
+      amount_min: 1
+      amount_max: 2
+  rare:
+    - material: DIAMOND
+      display_name: "&bDiamond Pack"
+      tier: RARE
+      weight: 40
+      amount_min: 3
+      amount_max: 6
+    - material: NETHERITE_INGOT
+      display_name: "&6Netherite Ingot"
+      tier: LEGENDARY
+      weight: 8
+      amount_min: 1
+      amount_max: 1
+    - material: NETHER_STAR
+      display_name: "&c&lMythic Star"
+      tier: MYTHIC
+      weight: 1
+      amount_min: 1
+      amount_max: 1
+

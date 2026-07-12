@@ -1,0 +1,15 @@
+.gradle/
+build/
+out/
+*.log
+hs_err_pid*.log
+
+# Local server/runtime folders
+run/
+server/
+plugins/
+
+# IDE/editor files
+.idea/
+.vscode/
+*.iml

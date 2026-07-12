@@ -1,0 +1,25 @@
+name: LootBox
+version: '${version}'
+main: dev.snowflake.lootbox.LootBoxPlugin
+description: Signed weighted loot boxes with PostgreSQL audit history.
+api-version: '26.1.2'
+authors: [Snowflake]
+load: POSTWORLD
+softdepend: [Mail, PlaceholderAPI, ItemsAdder]
+
+commands:
+  lootbox:
+    description: Opens LootBox gallery, chance tables, and admin tools.
+    usage: /lootbox [chance|list|give|createpool|viewpool|history|reload]
+    aliases: [gacha, lootboxes, "가챠"]
+    permission: lootbox.use
+
+permissions:
+  lootbox.use:
+    description: Use LootBox player commands and open issued boxes.
+    default: true
+  lootbox.admin:
+    description: Issue boxes, edit pools, inspect history, and reload LootBox.
+    default: op
+    children:
+      lootbox.use: true
